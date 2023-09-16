@@ -13,6 +13,7 @@
     "rsm-binary-io",
     "span-lite",
     "spdlog",
+    "simpleini",
     "xbyak"
   ],
   "builtin-baseline":"bba8794b82a0f44b8709f294850a2c8e96b61415",

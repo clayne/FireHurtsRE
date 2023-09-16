@@ -221,7 +221,7 @@ class TickerPlayer
 
 		float mindist2 = 1.0E15f;
 		RE::TESObjectREFR* refr = 0;
-		RE::TES::GetSingleton()->ForEachReference([=, &mindist2, &refr](RE::TESObjectREFR& _refr) {
+		RE::TES::GetSingleton()->ForEachReference([=, &mindist2, &refr](RE::TESObjectREFR& _refr) -> RE::BSContainer::ForEachResult {
 			if (!_refr.IsDisabled() && FiresStorage::is_fire(_refr)) {
 				float curdist = a->GetPosition().GetSquaredDistance(FiresStorage::get_bounds_center(&_refr));
 				if (curdist < mindist2) {
@@ -229,7 +229,7 @@ class TickerPlayer
 					refr = &_refr;
 				}
 			}
-			return true;
+			return RE::BSContainer::ForEachResult::kContinue;
 		});
 
 #ifdef DEBUG
